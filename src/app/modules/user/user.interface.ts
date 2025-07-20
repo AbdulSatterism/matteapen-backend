@@ -8,6 +8,8 @@ export type IUser = {
   phone: string;
   password: string;
   isDeleted?: boolean;
+  image?: string;
+  role?: string;
   authentication?: {
     isResetPassword: boolean;
     oneTimeCode: number;

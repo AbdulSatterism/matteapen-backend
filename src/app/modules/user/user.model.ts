@@ -18,6 +18,15 @@ const userSchema = new Schema<IUser, UserModal>(
       unique: true,
       lowercase: true,
     },
+    image: {
+      type: String,
+      default: '',
+    },
+    role: {
+      type: String,
+      default: 'USER',
+      enum: ['USER', 'ADMIN'],
+    },
     password: {
       type: String,
       required: true,
