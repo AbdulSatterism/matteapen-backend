@@ -8,3 +8,8 @@ export type IResetPassword = {
   email: string;
   otp: number;
 };
+
+export interface INewsletterSubscriber {
+  email: string;
+  name: string;
+}

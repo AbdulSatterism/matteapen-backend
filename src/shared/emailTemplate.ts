@@ -1,4 +1,8 @@
-import { ICreateAccount, IResetPassword } from '../types/emailTamplate';
+import {
+  ICreateAccount,
+  INewsletterSubscriber,
+  IResetPassword,
+} from '../types/emailTamplate';
 
 const createAccount = (values: ICreateAccount) => {
   const data = {
@@ -39,7 +43,53 @@ const resetPassword = (values: IResetPassword) => {
   return data;
 };
 
+const newsLetter = (values: INewsletterSubscriber) => {
+  const data = {
+    to: values.email,
+    subject: 'Welcome to Our Newsletter!', // Changed from password reset
+    html: `
+    <body style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f8fafc;">
+      <div style="max-width: 600px; margin: 30px auto; padding: 0 20px;">
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+          <!-- Header -->
+          <div style="background: rgba(59, 130, 246, 0.5); padding: 24px 32px; text-align: center;">
+            <h2 style="color: #fff; margin: 0; font-size: 22px; font-weight: 600;">Thanks for Subscribing!</h2>
+          </div>
+          
+          <!-- Content -->
+          <div style="padding: 32px;">
+            <h1 style="color: #1e293b; font-size: 24px; margin: 0 0 24px; font-weight: 600;">Welcome, ${values.name}!</h1>
+            <p style="color: #64748b; font-size: 16px; line-height: 1.5; margin-bottom: 24px;">
+              Thank you for subscribing to <strong>Our Newsletter</strong> with the email <strong>${values.email}</strong>. 
+              We appreciate your interest!
+            </p>
+            
+            <div style="background-color: rgba(59, 130, 246, 0.1); border-left: 4px solid rgba(59, 130, 246, 0.5); padding: 16px; margin: 24px 0; border-radius: 0 4px 4px 0;">
+              <p style="color: #334155; font-size: 15px; margin: 0; line-height: 1.5;">
+                You'll receive our next update soon.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Footer -->
+          <div style="background: #f8fafc; padding: 24px 32px; text-align: center; border-top: 1px solid #e2e8f0;">
+            <p style="color: #94a3b8; font-size: 14px; margin: 0;">
+              © ${new Date().getFullYear()} Our Newsletter. All rights reserved.
+            </p>
+            <p style="color: #94a3b8; font-size: 12px; margin-top: 8px;">
+              <a href="#" style="color: #64748b; text-decoration: none;">Unsubscribe</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </body>
+    `,
+  };
+  return data;
+};
+
 export const emailTemplate = {
   createAccount,
   resetPassword,
+  newsLetter,
 };

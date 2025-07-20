@@ -13,7 +13,11 @@ const createNewsLetter = async (payload: INewsLetter) => {
     throw new Error('Failed to create newsletter subscription');
   }
 
-  const sendCongrateMail = emailTemplate.createAccount();
+  const sendCongrateMail = emailTemplate.newsLetter({
+    email: payload.email,
+    name: payload.name,
+  });
+
   emailHelper.sendEmail(sendCongrateMail);
 
   return newsLetter;
