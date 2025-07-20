@@ -6,6 +6,8 @@
 
 ### input =>
 
+### post route =>http://10.10.12.54:3013/api/v1/news-letter/subscribe-newsletter
+
 {
 "email":"abdulsatter.ism@gmail.com",
 "name":"Abdul Satter"
